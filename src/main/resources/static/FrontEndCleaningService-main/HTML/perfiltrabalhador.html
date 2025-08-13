@@ -26,45 +26,4 @@
     <button id="btnSalvar">Salvar Perfil</button>
   </section>
 
-  <!-- SCRIPT deve ficar aqui -->
-  <script>
-    // Garante que o DOM esteja carregado antes de adicionar o event listener
-    document.addEventListener('DOMContentLoaded', () => {
-      const btnSalvar = document.getElementById('btnSalvar');
-
-      btnSalvar.addEventListener('click', () => {
-        const cpf = document.getElementById('cpf').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
-        const linkedin = document.getElementById('linkedin').value.trim();
-        const site = document.getElementById('site').value.trim();
-
-        // Validação simples (opcional)
-        if (!cpf || !telefone) {
-          alert('Por favor, preencha pelo menos CPF/CNPJ e Telefone.');
-          return;
-        }
-
-        const dados = { cpf, telefone, linkedin, site };
-
-        fetch('http://localhost:8080/api/usuarios', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(dados)
-        })
-          .then(response => {
-            if (!response.ok) throw new Error('Erro na resposta do servidor');
-            return response.json();
-          })
-          .then(data => {
-            alert('Perfil salvo com sucesso!');
-            console.log(data);
-          })
-          .catch(error => {
-            console.error('Erro ao salvar:', error);
-            alert('Erro ao salvar os dados.');
-          });
-      });
-    });
-  </script>
-</body>
-</html>
+  

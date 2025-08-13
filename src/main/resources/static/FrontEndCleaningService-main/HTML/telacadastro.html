@@ -10,7 +10,7 @@
   <div class="container">
     <div class="form-wrapper">
       <div class="form-left">
-        <img src="imagens/logo.png" alt="Robô" class="robot-icon" />
+        <img src="../../imagens/logo.png" alt="Robô" class="robot-icon" />
         <div class="input-group">
           <label for="nome">👤 Nome *</label>
           <input type="text" id="nome" placeholder="Digite seu nome" required />
@@ -31,8 +31,8 @@
           <button type="button" id="btnPF">🧍 Pessoa física</button>
         </div>
         <div class="input-group">
-          <label for="cpf">🪪 CPF *</label>
-          <input type="text" id="cpf" placeholder="000.000.000-00" required />
+          <label for="cpf" id="labelCpfCnpj">CNPJ *</label>
+          <input type="text" id="cpf" placeholder="00.000.000/0000-00" required />
         </div>
         <div class="input-group">
           <label for="email">📧 Email *</label>
@@ -52,31 +52,6 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Alternar visibilidade da senha
-      const senhaInput = document.getElementById('senha');
-      const toggleSenha = document.getElementById('toggleSenha');
-      toggleSenha.addEventListener('click', () => {
-        senhaInput.type = senhaInput.type === 'password' ? 'text' : 'password';
-      });
-
-      // Alternar tipo pessoa
-      const btnPJ = document.getElementById('btnPJ');
-      const btnPF = document.getElementById('btnPF');
-
-      btnPJ.addEventListener('click', () => {
-        btnPJ.classList.add('active');
-        btnPF.classList.remove('active');
-      });
-
-      btnPF.addEventListener('click', () => {
-        btnPF.classList.add('active');
-        btnPJ.classList.remove('active');
-      });
-
-      // Aqui você pode adicionar manipulação do form ou validação extra se quiser
-    });
-  </script>
+  <script src="../../js/cadastro.js"></script>
 </body>
 </html>
