@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #000;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #cceeff, #f5d0ff);
+  font-weight: bold;
+}
+
+.navbar a {
+  margin: 0 0.7rem;
+  text-decoration: none;
+  color: #000;
+  position: relative;
+}
+
+.navbar a.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: #000;
+  width: 100%;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+
+/* Conteúdo principal */
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.left, .right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.left img {
+  width: 200px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.services-list {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.8;
+}
+
+/* Mapa e botão */
+.map iframe {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.location-button {
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.location-button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.95rem;
+  border-top: 1px solid #ddd;
+}
+
+.Robôfaxineiro{
+  width: 200px;
+}

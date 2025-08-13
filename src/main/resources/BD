@@ -1,0 +1,69 @@
+CREATE DATABASE IF NOT EXISTS servicos_domesticos;
+USE servicos_domesticos;
+
+CREATE TABLE usuario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE endereco (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    rua VARCHAR(255),
+    numero VARCHAR(20),
+    bairro VARCHAR(100),
+    cidade VARCHAR(100),
+    estado VARCHAR(50),
+    cep VARCHAR(20),
+    usuario_id BIGINT,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+CREATE TABLE servico (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT
+);
+
+CREATE TABLE pedido_servico (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT,
+    servico_id BIGINT,
+    endereco_id BIGINT,
+    data_pedido DATETIME,
+    status VARCHAR(50),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    FOREIGN KEY (servico_id) REFERENCES servico(id),
+    FOREIGN KEY (endereco_id) REFERENCES endereco(id)
+);
+
+CREATE TABLE disponibilidade (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT,
+    dia_semana VARCHAR(20),
+    horario_inicio TIME,
+    horario_fim TIME,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+CREATE TABLE avaliacao (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    pedido_servico_id BIGINT,
+    usuario_id BIGINT,
+    nota INT,
+    comentario TEXT,
+    data_avaliacao DATETIME,
+    FOREIGN KEY (pedido_servico_id) REFERENCES pedido_servico(id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);
+
+CREATE TABLE notificacao (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT,
+    mensagem TEXT,
+    lida BOOLEAN DEFAULT FALSE,
+    data_envio DATETIME,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+);

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil - DOMUSPRO</title>
+  <link rel="stylesheet" href="../CSS/perfiltrabalhador.css" />
+</head>
+<body>
+  <!-- seu conteúdo HTML aqui -->
+
+  <!-- Formulário com inputs -->
+  <section class="dados">
+    <label>🪪 <strong>CPF/CNPJ</strong><br>
+      <input type="text" id="cpf" placeholder="Digite seu CPF ou CNPJ" />
+    </label><br /><br />
+    <label>📞 <strong>Telefone</strong><br>
+      <input type="text" id="telefone" placeholder="Digite seu telefone" />
+    </label><br /><br />
+    <label>🔗 <strong>LinkedIn</strong><br>
+      <input type="url" id="linkedin" placeholder="URL do seu LinkedIn" />
+    </label><br /><br />
+    <label>🌐 <strong>Site</strong><br>
+      <input type="url" id="site" placeholder="URL do seu site" />
+    </label><br /><br />
+    <button id="btnSalvar">Salvar Perfil</button>
+  </section>
+
+  <!-- SCRIPT deve ficar aqui -->
+  <script>
+    // Garante que o DOM esteja carregado antes de adicionar o event listener
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnSalvar = document.getElementById('btnSalvar');
+
+      btnSalvar.addEventListener('click', () => {
+        const cpf = document.getElementById('cpf').value.trim();
+        const telefone = document.getElementById('telefone').value.trim();
+        const linkedin = document.getElementById('linkedin').value.trim();
+        const site = document.getElementById('site').value.trim();
+
+        // Validação simples (opcional)
+        if (!cpf || !telefone) {
+          alert('Por favor, preencha pelo menos CPF/CNPJ e Telefone.');
+          return;
+        }
+
+        const dados = { cpf, telefone, linkedin, site };
+
+        fetch('http://localhost:8080/api/usuarios', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        })
+          .then(response => {
+            if (!response.ok) throw new Error('Erro na resposta do servidor');
+            return response.json();
+          })
+          .then(data => {
+            alert('Perfil salvo com sucesso!');
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Erro ao salvar:', error);
+            alert('Erro ao salvar os dados.');
+          });
+      });
+    });
+  </script>
+</body>
+</html>
