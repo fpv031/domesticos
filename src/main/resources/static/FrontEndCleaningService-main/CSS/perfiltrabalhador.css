@@ -1,0 +1,146 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, html {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #d4ecfd, #f4d1f4);
+  font-weight: bold;
+}
+.navbar a {
+  text-decoration: none;
+  margin: 0 1rem;
+  color: #000;
+}
+.navbar a.active {
+  border-bottom: 2px solid #000;
+}
+
+/* Layout */
+.perfil-container {
+  display: flex;
+  min-height: 90vh;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #2c2c2c;
+  color: white;
+  width: 250px;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.sidebar .profile-pic {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.sidebar-menu p {
+  text-align: left;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.sidebar-menu ul {
+  list-style: none;
+  text-align: left;
+}
+.sidebar-menu li {
+  padding: 8px 0;
+  cursor: pointer;
+}
+.sidebar-menu .active-item {
+  font-weight: bold;
+}
+
+/* Main profile content */
+.profile-main {
+  flex: 1;
+  padding: 2rem;
+}
+.profile-main h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.profile-icon {
+  width: 80px;
+}
+.info p {
+  margin: 0.3rem 0;
+}
+.info a {
+  color: #0077cc;
+}
+
+.dados p {
+  margin-bottom: 0.8rem;
+}
+
+.opcoes {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.box {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+.box .edit {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.anuncio {
+  margin-top: 2rem;
+}
+.anuncio-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.dots {
+  float: right;
+  cursor: pointer;
+}
+.premium-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.premium-icon {
+  width: 60px;
+}
+.badge {
+  font-weight: bold;
+}
+.benefit {
+  font-size: 0.85rem;
+  color: #444;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - DOMUSPRO</title>
+  <link rel="stylesheet" href="../CSS/telacadastro.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="form-left">
+        <img src="../../imagens/logo.png" alt="Robô" class="robot-icon" />
+        <div class="input-group">
+          <label for="nome">👤 Nome *</label>
+          <input type="text" id="nome" placeholder="Digite seu nome" required />
+        </div>
+        <div class="input-group">
+          <label for="sobrenome">👤 Sobrenome *</label>
+          <input type="text" id="sobrenome" placeholder="Digite seu sobrenome" required />
+        </div>
+        <div class="input-group">
+          <label for="telefone">📞 Telefone *</label>
+          <input type="tel" id="telefone" placeholder="(99) 99999-9999" required />
+        </div>
+      </div>
+
+      <div class="form-right">
+        <div class="tipo-pessoa">
+          <button type="button" class="active" id="btnPJ">🏢 Pessoa jurídica</button>
+          <button type="button" id="btnPF">🧍 Pessoa física</button>
+        </div>
+        <div class="input-group">
+          <label for="cpf" id="labelCpfCnpj">CNPJ *</label>
+          <input type="text" id="cpf" placeholder="00.000.000/0000-00" required />
+        </div>
+        <div class="input-group">
+          <label for="email">📧 Email *</label>
+          <input type="email" id="email" placeholder="Digite seu email" required />
+        </div>
+        <div class="input-group password">
+          <label for="senha">🔑 Senha *</label>
+          <input type="password" id="senha" placeholder="Digite sua senha" required />
+          <span id="toggleSenha" style="cursor:pointer;">👁️</span>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="termos" required />
+          <label for="termos">Você concorda com os Termos de uso e nossa Política de Privacidade.</label>
+        </div>
+        <button type="submit" class="cadastro-button">CADASTRE-SE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/cadastro.js"></script>
+</body>
+</html>
