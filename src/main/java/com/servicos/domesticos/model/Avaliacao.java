@@ -20,18 +20,45 @@ public class Avaliacao {
 
     private int nota; // de 1 a 5
     private String comentario;
-    public void setAvaliador(Usuario orElseThrow) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAvaliador'");
-    }
-    public void setNota(int nota2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setNota'");
-    }
-    public void setComentario(String comentario2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setComentario'");
-    }
 
     // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Usuario getAvaliador() {
+        return avaliador;
+    }
+
+    public void setAvaliador(Usuario avaliador) {
+        this.avaliador = avaliador;
+    }
+
+    public Usuario getAvaliado() {
+        return avaliado;
+    }
+
+    public void setAvaliado(Usuario avaliado) {
+        this.avaliado = avaliado;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
 }

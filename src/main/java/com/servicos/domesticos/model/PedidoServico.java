@@ -3,7 +3,6 @@ package com.servicos.domesticos.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import java.time.LocalDate;
-import java.util.List;
 import com.servicos.domesticos.model.Usuario;
 
 import jakarta.persistence.Entity;
