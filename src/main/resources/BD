@@ -1,119 +1,120 @@
+-- Active: 1755057838629@@127.0.0.1@3307@servicos_domesticos
 CREATE DATABASE IF NOT EXISTS servicos_domesticos;
 USE servicos_domesticos;
 
 -- Usuários (clientes e empregados)
 CREATE TABLE usuario (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     tipo VARCHAR(50) NOT NULL -- 'CLIENTE' ou 'EMPREGADO'
-);
+) ENGINE=InnoDB;
 
 -- Endereço do usuário
 CREATE TABLE endereco (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     rua VARCHAR(255),
     numero VARCHAR(20),
     bairro VARCHAR(100),
     cidade VARCHAR(100),
     estado VARCHAR(50),
     cep VARCHAR(20),
-    usuario_id BIGINT,
+    usuario_id BIGINT UNSIGNED,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Serviços oferecidos
 CREATE TABLE servico (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT
-);
+) ENGINE=InnoDB;
 
 -- Relação N:N entre empregado e serviço
 CREATE TABLE empregado_servico (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    empregado_id BIGINT,
-    servico_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    empregado_id BIGINT UNSIGNED,
+    servico_id BIGINT UNSIGNED,
     FOREIGN KEY (empregado_id) REFERENCES usuario(id),
     FOREIGN KEY (servico_id) REFERENCES servico(id)
-);
+) ENGINE=InnoDB;
 
 -- Pedido de serviço
 CREATE TABLE pedido_servico (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id BIGINT,
-    empregado_id BIGINT,
-    servico_id BIGINT,
-    endereco_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT UNSIGNED,
+    empregado_id BIGINT UNSIGNED,
+    servico_id BIGINT UNSIGNED,
+    endereco_id BIGINT UNSIGNED,
     data_pedido DATETIME,
     status VARCHAR(50),
     FOREIGN KEY (cliente_id) REFERENCES usuario(id),
     FOREIGN KEY (empregado_id) REFERENCES usuario(id),
     FOREIGN KEY (servico_id) REFERENCES servico(id),
     FOREIGN KEY (endereco_id) REFERENCES endereco(id)
-);
+) ENGINE=InnoDB;
 
 -- Disponibilidade do empregado
 CREATE TABLE disponibilidade (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    empregado_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    empregado_id BIGINT UNSIGNED,
     dia_semana VARCHAR(20),
     horario_inicio TIME,
     horario_fim TIME,
     FOREIGN KEY (empregado_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Indisponibilidade pontual do empregado
 CREATE TABLE indisponibilidade (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    empregado_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    empregado_id BIGINT UNSIGNED,
     inicio DATETIME,
     fim DATETIME,
     FOREIGN KEY (empregado_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Avaliações
 CREATE TABLE avaliacao (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    pedido_servico_id BIGINT,
-    cliente_id BIGINT,
-    empregado_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    pedido_servico_id BIGINT UNSIGNED,
+    cliente_id BIGINT UNSIGNED,
+    empregado_id BIGINT UNSIGNED,
     nota INT,
     comentario TEXT,
     data_avaliacao DATETIME,
     FOREIGN KEY (pedido_servico_id) REFERENCES pedido_servico(id),
     FOREIGN KEY (cliente_id) REFERENCES usuario(id),
     FOREIGN KEY (empregado_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Notificações
 CREATE TABLE notificacao (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usuario_id BIGINT UNSIGNED,
     mensagem TEXT,
     lida BOOLEAN DEFAULT FALSE,
     data_envio DATETIME,
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Conversa (chat entre cliente e empregado)
 CREATE TABLE conversa (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id BIGINT,
-    empregado_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT UNSIGNED,
+    empregado_id BIGINT UNSIGNED,
     FOREIGN KEY (cliente_id) REFERENCES usuario(id),
     FOREIGN KEY (empregado_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
 
 -- Mensagens do chat
 CREATE TABLE mensagem (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    conversa_id BIGINT,
-    remetente_id BIGINT,
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    conversa_id BIGINT UNSIGNED,
+    remetente_id BIGINT UNSIGNED,
     conteudo TEXT,
     data_hora DATETIME,
     lida BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (conversa_id) REFERENCES conversa(id),
     FOREIGN KEY (remetente_id) REFERENCES usuario(id)
-);
+) ENGINE=InnoDB;
