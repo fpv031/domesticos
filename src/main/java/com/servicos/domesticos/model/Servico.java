@@ -35,3 +35,4 @@ public class Servico {
     public List<PedidoServico> getPedidos() { return pedidos; }
     public void setPedidos(List<PedidoServico> pedidos) { this.pedidos = pedidos; }
 }
+ 
